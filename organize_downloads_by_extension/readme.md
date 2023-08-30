@@ -26,5 +26,5 @@ The arguments mean the following:
  * **/ST** - The time to run the task (in 24 hours format).
 
 ```bat
-SCHTASKS /CREATE /SC DAILY /TN "PersonalTasks\Organize Downloads" /TR "powershell.exe %USERPROFILE%\Documents\scripts\organize_downloads_by_extension.ps1" /ST 10:00
+SCHTASKS /CREATE /SC DAILY /ST 10:00 /TN "PersonalTasks\Organize Downloads 3" /TR "powershell.exe -File '%USERPROFILE%\Documents\scripts\organize_downloads_by_extension.ps1'"
 ```
