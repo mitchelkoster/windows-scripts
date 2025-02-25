@@ -1,0 +1,16 @@
+# Make a request as CURL for a nice API response
+$IPaddress = Invoke-WebRequest -URI "https://ifconfig.me" -Headers @{
+    "User-Agent"="curl/7.54.1"
+}
+
+# Define the log file path and structure
+$LogFile = "$($env:LOCALAPPDATA)\ip_rotation.log"
+$Date = Get-Date -UFormat "%d/%m/%Y"
+$LogFormat = "[$Date] $IPaddress"
+
+# Write log to file
+If (!(Test-Path $LogFile)) {
+    New-Item -Path $LogFile -ItemType File -Force
+} Else {
+    Add-Content -Path $LogFile -Value "[$Date] $IPaddress"
+}
